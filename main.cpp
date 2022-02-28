@@ -15,6 +15,5 @@ int main()
         }
         sum += num;
     }
-    std::printf("sum = %d\n", sum);
-
+    
 }
