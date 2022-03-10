@@ -13,7 +13,7 @@ int main()
         }
 }*/
 
-// L2 C++
+/* // L2 C++
 #include <iostream>
 #include <string>
 #include <string_view>
@@ -28,6 +28,21 @@ int main() {
   
   std::string_view view1 {original};
   std::cout<< "Original ="<< original<<std::endl;
-  std::cout<<" view 1 ="<< view1 <<std::endl;
+  std::cout<<" view 1 ="<< view1 <<std::endl;*/ 
 }
-    
+
+// L3 C++
+#include <iostream>
+#include <string>
+#include <string_view>
+
+int main() { 
+        // string of languages
+        std::string languages = "English, French, French Latin, Bengali, Turkish, Hindi, Farsi, Korean, Catonese, Spanish, Arabic, Urdu, Latin, German";
+        
+        // language we're searching for
+        std::string language_of_interest = "Hindi";
+        
+        // position of the searched language
+        std::size_t position = languages.find(language_of_interest);
+}
