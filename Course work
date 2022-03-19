@@ -1,0 +1,19 @@
+#include <cstdio> 
+#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <string_view>
+#include <array> 
+#include <vector>
+
+int main()
+{
+    // Creating the database array of the online super market 
+    
+    std::vector<std::string> online_sp { "shampoo ", "Vegetables ", "Milk ", "Meat ", "Chicken ", "Chips ", "Pepsi ", "White toast ", "Pasta ", "Pasta sauce ", "Eggs ", "Cheese ", "Cereal ", "Burgers ", "Jam ", "Redbull ", "Jam ", "Nescafe ", " Hand soap ", "Chocolate ", " Olive Oil ", "Yoghourt ", " Tissue Box ", "Tea ", "Water ", " Cheetos ", " Rice", "Jelly beans ", "Peanut butter ", "Salt "}; 
+    
+    std::cout<<online_sp << std::endl;  
+    
+
+ 
+}
