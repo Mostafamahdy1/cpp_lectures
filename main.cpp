@@ -1,48 +1,32 @@
-/*#include <array>
-#include <cstdio>
-
+#include <cstdio> 
+#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <string_view>
+#include <array> 
+#include <vector>
+ 
 int main()
 {
-        std::array<int, 4> arr1 = {1, 2, 3, 4};
-        std::array<int, 4> arr2 = {5, 6, 7, 8};
-        int  sum  = 0;
-        for (int i = 0; i < arr1.size(); i += 1)
-        {
-                sum = arr1[i] + arr2[i];
-                std::printf("Sum[%d}=%d\n", i, sum);
-        }
-}*/
+    // Creating the database array of the online super market 
+    
+    std::vector<std::string> online_sp { "shampoo ", "Vegetables pack ", "Milk ", "Meat ", "Chicken ", "Chips ", "Pepsi ", "White toast ", "Pasta ", "Pasta sauce ", "Eggs ", "Cheese ", "Cereal ", "Burgers ", "Jam ", "Redbull ", "monster ", "Nescafe ", "Hand soap ", "Chocolate ", "Olive Oil ", "Yoghourt ", "Tissue Box ", "Tea ", "Water ", "Cheetos ", "Rice ", "Jelly beans ", "Peanut butter ", "Salt "};
+    
+    // vector array for prices in pounds same order as online sp array 
+     std::vector<std::string> prices {"5","3","2","5","5","1","1","2","1.5","2","4.5","3","3.10", "4.5", "2.5", "1.5", "3","2.75", "1.99", "1", "5", "1", "1.08", "3","1", "1.5", "6", "1.5", "4.30", "4"};
+     
+    // vector array for best before date 
+      std::vector< std::string> best_b {"1/1/2025", "1/4/2022", "1/4/2022","25/4/2022", "25/4/2022","01/01/2023", "01/01/2023", "01/05/2022", "01/01/2024", "01/05/2022", "01/05/2022", "22/04/2022", "01/01/2024", " 01/05/2022", "15/06/2022", "22/2/2024","09/1/2024", "01/01/2025","01/01/2025", "08/09/2022","17/10/2022","15/4/2022", "01/01/2027", "12/12/2023","01/01/2024", "19/08/2023", "07/12/2023", 
+      "28/2/2023", "01/11/2022", "13/4/2025"};
+      
+    // vextor array for item types 
+    std::vector< std::string> types {"health & beuty", "food", "Milk products", "food", "food","snacks", " drinks","food", "food", "food","food","Milk products","snacks","food","food","drinks", "drinks","drinks","health & beuty","snacks", "oil","Milk products","health & beuty","drinks", "drinks", "snacks", "food", "snacks", "food", "food"};
 
-/* // L2 C++
-#include <iostream>
-#include <string>
-#include <string_view>
+    std::string display ="fh "; 
 
-int main() {
-  // basics of string_view
-  std::string original = "prog is fun! ";
-  std::string copy = original;
-  std::cout<<"original ="<< original << std::endl;
-  std::cout<<"copy ="<< copy << std::endl;
- //currently have 3 strings variabels in memory
-  
-  std::string_view view1 {original};
-  std::cout<< "Original ="<< original<<std::endl;
-  std::cout<<" view 1 ="<< view1 <<std::endl;*/ 
+    for(int i=0; i<=29;i++)
+    {
+     display = online_sp[i] + prices[i] +" " + types[i];
+     std::cout<<display<<std::endl;
 }
-
-// L3 C++
-#include <iostream>
-#include <string>
-#include <string_view>
-
-int main() { 
-        // string of languages
-        std::string languages = "English, French, French Latin, Bengali, Turkish, Hindi, Farsi, Korean, Catonese, Spanish, Arabic, Urdu, Latin, German";
-        
-        // language we're searching for
-        std::string language_of_interest = "Hindi";
-        
-        // position of the searched language
-        std::size_t position = languages.find(language_of_interest);
 }
