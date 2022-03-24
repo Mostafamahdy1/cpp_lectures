@@ -142,10 +142,10 @@ int main()
         char search;
         std::string search_item = "..";
       
-       // declaring m as index to count the position 
-      int m = 0 ; 
+       // declaring i_address to hold value of the index 
       
-     int m_address ; 
+      
+       int i_address ; 
      
         // asking the user if he wants to search for any item
         
@@ -159,24 +159,31 @@ int main()
             
              while (search_item != "q" && search_item != "Q")
              {
-                  std::cout<<"Please enter the item name you want to search for"<<std::endl; 
+                  std::cout<<"Please enter the first name of the item you want to search exactly as wirttin in the list including capitals"<<std::endl; 
                   std::cin>> search_item;
                   
                 for ( int i =0; i<array_lenght; i++){
                     
-                 if (items[i]== search_item)
+                 if (items[i]==search_item)
                  {
-                     m_address = i;
-                     std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl; 
+                     
+                     
+                     i_address = i;
+                     
+                     //std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl; 
+                    std::cout<<"yes the item is availbe"<< " " <<items[i_address]<< ", "<< "£" << prices[i_address] << ", " << section[i_address] << ", "  << best_b[i_address] << std::endl<<std::endl; 
+                    
 
                       
                  }
                 }
+                
                  
-                 //std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl; 
-                 
+                 std::cout<<"If there is no output check if you typed the item exactly as in the list"<<std::endl<<std::endl; 
                  std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
-                 std::cin>> search_item; 
+                 std::cin>> search_item;
+               std::cout<<std::endl; 
+               std::cout<<std::endl; 
                  
               }
             
@@ -191,11 +198,58 @@ int main()
                         std::cin >> search;
                 } while (search != 'N' && search != 'n' && search != 'Y' && search != 'y');
         }
+        
+        
+    // declaring variable search_section and section_search as sec
+    
+   char sec; 
+   
+   std::string search_section =".."; 
+   
+   // declaring s_address to hold value of the index
+   
+   int s_address; 
+        
+        // asking the user if he wants to search by section 
+         std::cout << "Do you want to search by section? Enter Y for yes N for no." << std::endl;
+
+        std::cin >> sec;
+        
+        if (sec == 'Y' || sec == 'y') {
+        
+        while (search_section != "q" && search_section != "Q")
+             {
+                  std::cout<<"Please enter the section name of the item you want to search exactly as wirttin in the list including capitals"<<std::endl; 
+                  std::cin>> search_section;
+                  
+         for ( int i =0; i<array_lenght; i++){
+                    
+                 if (section[i]==search_section)
+                 {
+                     
+                     
+                     s_address = i;
+                     
+                     //std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl; 
+                    std::cout<<search_section<<":"<< " " <<items[s_address]<< ", "<< "£" << prices[s_address] << ", " << section[s_address] << ", "  << best_b[s_address] << std::endl<<std::endl; 
+                    
+
 }
+         }    
          
-
-
-
-
-
-
+          std::cout<<"If there is no output check if you typed the item exactly as in the list"<<std::endl<<std::endl; 
+                 std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
+                 std::cin>> search_section;
+               std::cout<<std::endl; 
+               std::cout<<std::endl;
+}}
+ else if (sec == 'N' || sec == 'n') { std::cout << "No search operation " << std::endl << std::endl;}
+       
+      else
+        {    // if the input is inavlid it will repeat until it gets a valid input 
+                do {
+                        std::cout << "Invalid option. Please re-enter: ";
+                        std::cin >> search;
+                } while (sec != 'N' && sec != 'n' && sec != 'Y' && sec != 'y');
+        }
+}
