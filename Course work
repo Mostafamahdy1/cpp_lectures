@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <array>
 #include <cstdio>
 #include <iostream>
@@ -5,21 +6,19 @@
 #include <string>
 #include <string_view>
 #include <vector>
-#include <algorithm>
 
 int main()
 {
-        // Creating the database array of the online super market
+        // Creating the database array of the online supermarket
 
-        std::vector<std::string> items {
-            "shampoo",   "Vegetables pack", "Milk",       "Meat",    "Chicken", "Chips",   "Pepsi",   "White toast", "Pasta",         "Pasta sauce",
-            "Eggs",      "Cheese",          "Cereal",     "Burgers", "Jam",     "Redbull", "monster", "Nescafe",     "Hand soap",     "Chocolate",
-            "Olive Oil", "Yoghourt",        "Tissue Box", "Tea",     "Water",   "Cheetos", "Rice",    "Jelly beans", "Peanut butter", "Salt"};
+        std::vector<std::string> items {"shampoo", "Vegetables", "Milk", "Meat",      "Chicken",       "Chips",    "Pepsi",  "White-toast",
+                                        "Pasta",   "sauce",      "Eggs", "Cheese",    "Cereal",        "Burgers",  "Jam",    "Redbull",
+                                        "monster", "Nescafe",    "soap", "Chocolate", "Oil",           "Yoghourt", "Tissue", "Tea",
+                                        "Water",   "Cheetos",    "Rice", "Jelly",     "Peanut-butter", "Salt"};
 
         // vector array for prices in pounds same order as online sp array
-        std::vector<std::string> prices {"5",   "3", "2",    "5",   "5",   "1",   "1", "2",    "1.5",  "2",
-                                         "4.5", "3", "3.10", "4.5", "2.5", "1.5", "3", "2.75", "1.99", "1",
-                                         "5",   "1", "1.08", "3",   "1",   "1.5", "6", "1.5",  "4.30", "4"};
+        std::vector<std::string> prices {"5",   "3", "2",    "5",    "5", "1", "1", "2",    "1.5", "2", "4.5", "3", "3.10", "4.5",  "2.5",
+                                         "1.5", "3", "2.75", "1.99", "1", "5", "1", "1.08", "3",   "1", "1.5", "6", "1.5",  "4.30", "4"};
 
         // vector array for best before date
         std::vector<std::string> best_b {"1/1/2025",   "1/4/2022",    "1/4/2022",   "25/4/2022",  "25/4/2022",  "01/01/2023",
@@ -29,27 +28,26 @@ int main()
                                          "01/01/2024", "19/08/2023",  "07/12/2023", "28/2/2023",  "01/11/2022", "13/4/2025"};
 
         // vextor array for item types
-        std::vector<std::string> section {"health & beuty", "food",   "Milk products", "food",          "food",           "snacks",
-                                          " drinks",        "food",   "food",          "food",          "food",           "Milk products",
-                                          "snacks",         "food",   "food",          "drinks",        "drinks",         "drinks",
-                                          "health & beuty", "snacks", "oil",           "Milk products", "health & beuty", "drinks",
-                                          "drinks",         "snacks", "food",          "snacks",        "food",           "food"};
+        std::vector<std::string> section {"health", "food",   "Milk-products", "food",          "food",   "snacks",        " drinks", "food",
+                                          "food",   "food",   "food",          "Milk-products", "snacks", "food",          "food",    "drinks",
+                                          "drinks", "drinks", "health",        "snacks",        "oil",    "Milk-products", "health",  "drinks",
+                                          "drinks", "snacks", "food",          "snacks",        "food",   "food"};
 
         // declaring variable to display the products
-        std::string display = ".. ";
+        std::string              display = ".. ";
 
-        std::cout << "This is the items availbe in our supermarket and their price, section and best before date: " << std::endl<<std::endl; 
+        std::cout << "This is the items availbe in our supermarket and their price, section and best before date: " << std::endl << std::endl;
         for (int i = 0; i <= 29; i++)
         {
-            //display = items[i] + " " + "£"+ prices[i] + " " + section[i] + " " + best_b[i];
+                // display = items[i] + " " + "£"+ prices[i] + " " + section[i] + " " + best_b[i];
                 std::cout << items[i] << ", ";
                 std::cout << "£" << prices[i] << ", ";
                 std::cout << section[i] << ", ";
                 std::cout << best_b[i] << std::endl;
         }
-        
-        std::cout<<std::endl;
-        
+
+        std::cout << std::endl;
+
         // declaring add variable to store the answer of the user
         char add;
 
@@ -106,150 +104,207 @@ int main()
         else if (add == 'N' || add == 'n') { std::cout << "No items will be added to this database. " << std::endl << std::endl; }
 
         else
-        {    // if the input is inavlid it will repeat until it gets a valid input 
+        {        // if the input is inavlid it will repeat until it gets a valid input
                 do {
                         std::cout << "Invalid option. Please re-enter: ";
                         std::cin >> add;
                 } while (add != 'N' && add != 'n' && add != 'Y' && add != 'y');
         }
-       
-        
-        std::cout << "This is the latest version of the database: " << std::endl<<std::endl;
-        
-        //getting the length of the vector array after updating it 
-         
-          int array_lenght = items.size();
-          
-         std::cout<<"The size of the vector array: "<<array_lenght <<std::endl<<std::endl; 
-        
-         // declaring the i 
-         
-        int i = 0;
-         
-        while(i < array_lenght)
-        {
-                display = items[i] + " " + "£"+ prices[i] + " " + section[i] + " " + best_b[i];
-                std::cout << display << std::endl;
-                i++; 
-        }
-        
-        //more space 
-        
-       std::cout<<std::endl; 
-       
-        
-        // Declaring search variable, search_item 
-        char search;
-        std::string search_item = "..";
-      
-       // declaring i_address to hold value of the index 
-      
-      
-       int i_address ; 
-     
-        // asking the user if he wants to search for any item
-        
-       std::cout<<"Do you want to search for any item? Enter Y for yes N for no."<<std::endl; 
-        
-        std::cin>> search; 
-        
-         if (search == 'Y' || search == 'y')
-        {
-            // reading the item that the user wants to search for 
-            
-             while (search_item != "q" && search_item != "Q")
-             {
-                  std::cout<<"Please enter the first name of the item you want to search exactly as wirttin in the list including capitals"<<std::endl; 
-                  std::cin>> search_item;
-                  
-                for ( int i =0; i<array_lenght; i++){
-                    
-                 if (items[i]==search_item)
-                 {
-                     
-                     
-                     i_address = i;
-                     
-                     //std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl; 
-                    std::cout<<"yes the item is availbe"<< " " <<items[i_address]<< ", "<< "£" << prices[i_address] << ", " << section[i_address] << ", "  << best_b[i_address] << std::endl<<std::endl; 
-                    
 
-                      
-                 }
-                }
-                
-                 
-                 std::cout<<"If there is no output check if you typed the item exactly as in the list"<<std::endl<<std::endl; 
-                 std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
-                 std::cin>> search_item;
-               std::cout<<std::endl; 
-               std::cout<<std::endl; 
-                 
-              }
-            
+        std::cout << "This is the latest version of the database: " << std::endl << std::endl;
+
+        // getting the length of the vector array after updating it
+
+        int array_lenght = items.size();
+
+        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
+
+        // declaring the i
+
+        int i = 0;
+
+        while (i < array_lenght)
+        {
+                display = items[i] + " " + "£" + prices[i] + " " + section[i] + " " + best_b[i];
+                std::cout << display << std::endl;
+                i++;
         }
-       
-       else if (search == 'N' || search == 'n') { std::cout << "No search operation " << std::endl << std::endl;}
-       
-      else
-        {    // if the input is inavlid it will repeat until it gets a valid input 
+
+        // more space
+
+        std::cout << std::endl;
+
+        // Declaring search variable, search_item
+        char        search;
+        std::string search_item = "..";
+
+        // declaring i_address to hold value of the index
+
+        int         i_address;
+
+        // asking the user if he wants to search for any item
+
+        std::cout << "Do you want to search for any item? Enter Y for yes N for no." << std::endl;
+
+        std::cin >> search;
+
+        if (search == 'Y' || search == 'y')
+        {
+                // reading the item that the user wants to search for
+
+                while (search_item != "q" && search_item != "Q")
+                {
+                        std::cout
+                            << "Please enter the name of the item you want to search exactly as wirttin in the list including capitals and dashes"
+                            << std::endl;
+                        std::cin >> search_item;
+
+                        for (int i = 0; i < array_lenght; i++)
+                        {
+                                if (items[i] == search_item)
+                                {
+                                        i_address = i;
+
+                                        // std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl;
+                                        std::cout << "yes the item is availbe"
+                                                  << " " << items[i_address] << ", "
+                                                  << "£" << prices[i_address] << ", " << section[i_address] << ", " << best_b[i_address] << std::endl
+                                                  << std::endl;
+                                }
+                        }
+
+                        std::cout << "If there is no output check if you typed the item exactly as in the list" << std::endl << std::endl;
+                        std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
+                        std::cin >> search_item;
+                        std::cout << std::endl;
+                        std::cout << std::endl;
+                }
+        }
+
+        else if (search == 'N' || search == 'n') { std::cout << "No search operation " << std::endl << std::endl; }
+
+        else
+        {        // if the input is inavlid it will repeat until it gets a valid input
                 do {
                         std::cout << "Invalid option. Please re-enter: ";
                         std::cin >> search;
                 } while (search != 'N' && search != 'n' && search != 'Y' && search != 'y');
         }
-        
-        
-    // declaring variable search_section and section_search as sec
-    
-   char sec; 
-   
-   std::string search_section =".."; 
-   
-   // declaring s_address to hold value of the index
-   
-   int s_address; 
-        
-        // asking the user if he wants to search by section 
-         std::cout << "Do you want to search by section? Enter Y for yes N for no." << std::endl;
+
+        // declaring variable search_section and section_search as sec
+
+        char        sec;
+
+        std::string search_section = "..";
+
+        // declaring s_address to hold value of the index
+
+        int         s_address;
+
+        // asking the user if he wants to search by section
+        std::cout << "Do you want to search by section? Enter Y for yes N for no." << std::endl;
 
         std::cin >> sec;
-        
-        if (sec == 'Y' || sec == 'y') {
-        
-        while (search_section != "q" && search_section != "Q")
-             {
-                  std::cout<<"Please enter the section name of the item you want to search exactly as wirttin in the list including capitals"<<std::endl; 
-                  std::cin>> search_section;
-                  
-         for ( int i =0; i<array_lenght; i++){
-                    
-                 if (section[i]==search_section)
-                 {
-                     
-                     
-                     s_address = i;
-                     
-                     //std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl; 
-                    std::cout<<search_section<<":"<< " " <<items[s_address]<< ", "<< "£" << prices[s_address] << ", " << section[s_address] << ", "  << best_b[s_address] << std::endl<<std::endl; 
-                    
 
-}
-         }    
-         
-          std::cout<<"If there is no output check if you typed the item exactly as in the list"<<std::endl<<std::endl; 
-                 std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
-                 std::cin>> search_section;
-               std::cout<<std::endl; 
-               std::cout<<std::endl;
-}}
- else if (sec == 'N' || sec == 'n') { std::cout << "No search operation " << std::endl << std::endl;}
-       
-      else
-        {    // if the input is inavlid it will repeat until it gets a valid input 
+        if (sec == 'Y' || sec == 'y')
+        {
+                while (search_section != "q" && search_section != "Q")
+                {
+                        std::cout << "Please enter the section name you want to search exactly as wirttin in the list including capitals"
+                                  << std::endl;
+                        std::cin >> search_section;
+
+                        for (int i = 0; i < array_lenght; i++)
+                        {
+                                if (section[i] == search_section)
+                                {
+                                        s_address = i;
+
+                                        // std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl;
+                                        std::cout << search_section << ":"
+                                                  << " " << items[s_address] << ", "
+                                                  << "£" << prices[s_address] << ", " << section[s_address] << ", " << best_b[s_address] << std::endl
+                                                  << std::endl;
+                                }
+                        }
+
+                        std::cout << "If there is no output check if you typed the item exactly as in the list" << std::endl << std::endl;
+                        std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
+                        std::cin >> search_section;
+                        std::cout << std::endl;
+                        std::cout << std::endl;
+                }
+        }
+        else if (sec == 'N' || sec == 'n') { std::cout << "No search operation " << std::endl << std::endl; }
+
+        else
+        {        // if the input is inavlid it will repeat until it gets a valid input
                 do {
                         std::cout << "Invalid option. Please re-enter: ";
-                        std::cin >> search;
+                        std::cin >> sec;
                 } while (sec != 'N' && sec != 'n' && sec != 'Y' && sec != 'y');
+        }
+
+        // performing the delete operation
+
+        // declaring char of the delete
+
+        char        del;
+
+        std::string delete_item = "..";
+
+        // declaring d_address to hold value of the index
+
+        int         d_address;
+
+        // asking the user if he wants to delete
+
+        std::cout << "Do you want to delete any item? Enter Y for yes N for no." << std::endl;
+
+        std::cin >> del;
+
+        if (del == 'Y' || del == 'y')
+        {
+                while (delete_item != "q" && delete_item != "Q")
+                {
+                        std::cout << "Please enter the name of the item you want to delete exactly as wirttin in the list including capitals"
+                                  << std::endl;
+                        std::cin >> delete_item;
+
+                        for (int i = 0; i < array_lenght; i++)
+                        {
+                                if (items[i] == delete_item)
+                                {
+                                        d_address = i;
+
+                                        items.erase(d_address);
+                                        prices.erase(d_address);
+                                        section(d_address);
+                                        best_b.erase(d_address);
+                                }
+                        }
+
+                        std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
+                        std::cin >> delete_item;
+                        std::cout << std::endl;
+                        std::cout << std::endl;
+                }
+        }
+        else if (del == 'N' || del == 'n') { std::cout << "No delete operation " << std::endl << std::endl; }
+
+        else
+        {        // if the input is inavlid it will repeat until it gets a valid input
+                do {
+                        std::cout << "Invalid option. Please re-enter: ";
+                        std::cin >> del;
+                } while (del != 'N' && del != 'n' && del != 'Y' && del != 'y');
+        }
+
+        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
+        while (i < array_lenght)
+        {
+                display = items[i] + " " + "£" + prices[i] + " " + section[i] + " " + best_b[i];
+                std::cout << display << std::endl;
+                i++;
         }
 }
