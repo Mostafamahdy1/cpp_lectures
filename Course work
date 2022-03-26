@@ -37,13 +37,24 @@ int main()
         std::string              display = ".. ";
 
         std::cout << "This is the items availbe in our supermarket and their price, section and best before date: " << std::endl << std::endl;
-        for (int i = 0; i <= 29; i++)
+
+        // getting the length of the vector array
+
+        int array_lenght = items.size();
+
+        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
+
+        // declaring the i
+
+        int i = 0;
+
+        while (i < array_lenght)
         {
-                // display = items[i] + " " + "£"+ prices[i] + " " + section[i] + " " + best_b[i];
                 std::cout << items[i] << ", ";
                 std::cout << "£" << prices[i] << ", ";
                 std::cout << section[i] << ", ";
                 std::cout << best_b[i] << std::endl;
+                i++;
         }
 
         std::cout << std::endl;
@@ -110,24 +121,22 @@ int main()
                         std::cin >> add;
                 } while (add != 'N' && add != 'n' && add != 'Y' && add != 'y');
         }
+        array_lenght = items.size();
+        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
 
         std::cout << "This is the latest version of the database: " << std::endl << std::endl;
 
-        // getting the length of the vector array after updating it
+        int j        = 0;
 
-        int array_lenght = items.size();
+        array_lenght = items.size();
 
-        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
-
-        // declaring the i
-
-        int i = 0;
-
-        while (i < array_lenght)
+        while (j < array_lenght)
         {
-                display = items[i] + " " + "£" + prices[i] + " " + section[i] + " " + best_b[i];
-                std::cout << display << std::endl;
-                i++;
+                std::cout << items[j] << ", ";
+                std::cout << "£" << prices[j] << ", ";
+                std::cout << section[j] << ", ";
+                std::cout << best_b[j] << std::endl;
+                j++;
         }
 
         // more space
@@ -220,7 +229,6 @@ int main()
                                 {
                                         s_address = i;
 
-                                        // std::cout<<"The position of the item is "<<m_address<<std::endl<<std::endl;
                                         std::cout << search_section << ":"
                                                   << " " << items[s_address] << ", "
                                                   << "£" << prices[s_address] << ", " << section[s_address] << ", " << best_b[s_address] << std::endl
@@ -277,11 +285,26 @@ int main()
                                 {
                                         d_address = i;
 
-                                        items.erase(d_address);
-                                        prices.erase(d_address);
-                                        section(d_address);
-                                        best_b.erase(d_address);
+                                        items.erase(items.begin() + i);
+                                        prices.erase(prices.begin() + i);
+                                        section.erase(section.begin() + i);
+                                        best_b.erase(best_b.begin() + i);
                                 }
+                        }
+
+                        array_lenght = items.size();
+                        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
+                        int i = 0;
+
+                        std::cout << "This is the latest version of the database: " << std::endl << std::endl;
+
+                        while (i < array_lenght)
+                        {
+                                std::cout << items[i] << ", ";
+                                std::cout << "£" << prices[i] << ", ";
+                                std::cout << section[i] << ", ";
+                                std::cout << best_b[i] << std::endl;
+                                i++;
                         }
 
                         std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
@@ -298,13 +321,5 @@ int main()
                         std::cout << "Invalid option. Please re-enter: ";
                         std::cin >> del;
                 } while (del != 'N' && del != 'n' && del != 'Y' && del != 'y');
-        }
-
-        std::cout << "The size of the vector array: " << array_lenght << std::endl << std::endl;
-        while (i < array_lenght)
-        {
-                display = items[i] + " " + "£" + prices[i] + " " + section[i] + " " + best_b[i];
-                std::cout << display << std::endl;
-                i++;
         }
 }
