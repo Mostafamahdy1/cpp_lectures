@@ -322,4 +322,100 @@ int main()
                         std::cin >> del;
                 } while (del != 'N' && del != 'n' && del != 'Y' && del != 'y');
         }
+
+        // declaring edit, edit_item, editing
+
+        char        edit;
+        std::string edit_item = "..";
+        char        edit_part;
+        int         e_adress;
+        std::string NEW = "..";
+
+        // Editing operation
+
+        std::cout << "Do you want to edit any item? Enter Y for yes N for no" << std::endl << std::endl;
+
+        std::cin >> edit;
+        std::cout << std::endl;
+
+        if (edit == 'y' || edit == 'Y')
+        {
+                while (edit_item != "q" && edit_item != "Q")
+                {
+                        std::cout << "Enter the name of item you want to edit exactly as wirttin in the list" << std::endl << std::endl;
+                        std::cin >> edit_item;
+                        std::cout << std::endl;
+
+                        for (int i = 0; i < array_lenght; i++)
+                        {
+                                if (items[i] == edit_item)
+                                {
+                                        std::cout
+                                            << "What do you want to edit for this item? Enter N for name, P for price, S for section or D for best before date"
+                                            << std::endl
+                                            << std::endl;
+                                        std::cin >> edit_part;
+
+                                        if (edit_part == 'n' || edit_part == 'N')
+                                        {
+                                                std::cout << "Enter the new name for the item" << std::endl;
+                                                std::cin >> NEW;
+                                                items.at(i) = NEW;
+                                        }
+                                        else if (edit_part == 'p' || edit_part == 'P')
+                                        {
+                                                std::cout << "Enter the new price for the item" << std::endl;
+                                                std::cin >> NEW;
+                                                prices.at(i) = NEW;
+                                        }
+                                        else if (edit_part == 's' || edit_part == 'S')
+                                        {
+                                                std::cout << "Enter the new section name for the item" << std::endl;
+                                                std::cin >> NEW;
+                                                section.at(i) = NEW;
+                                        }
+                                        else if (edit_part == 'd' || edit_part == 'D')
+                                        {
+                                                std::cout << "Enter the new best before date for the item in this form(dd/mm/yyyy)" << std::endl;
+                                                std::cin >> NEW;
+                                                best_b.at(i) = NEW;
+                                        }
+                                        else
+                                        {        // if the input is inavlid it will repeat until it gets a valid input
+                                                do {
+                                                        std::cout << "Invalid option. Please re-enter: ";
+                                                        std::cin >> edit_part;
+                                                } while (edit_part != 'N' && edit_part != 'n' && edit_part != 'P' && edit_part != 'p' &&
+                                                         edit_part != 's' && edit_part != 'S' && edit_part != 'D' && edit_part != 'd');
+                                        }
+                                }
+                        }
+
+                        std::cout << "If there is no output check if you typed the item exactly as in the list" << std::endl << std::endl;
+                        std::cout << "Enter Q if you want to quit or any other thing if you like to continue" << std::endl;
+                        std::cin >> edit_item;
+                        std::cout << std::endl;
+                        std::cout << std::endl;
+                }
+        }
+
+        else if (edit == 'n' || edit == 'N') { std::cout << "No edit operation" << std::endl << std::endl; }
+
+        else
+        {        // if the input is inavlid it will repeat until it gets a valid input
+                do {
+                        std::cout << "Invalid option. Please re-enter: ";
+                        std::cin >> edit;
+                } while (edit != 'N' && edit != 'n' && edit != 'Y' && edit != 'y');
+        }
+        int k = 0;
+        std::cout << "This is the latest version of the database: " << std::endl << std::endl;
+        while (k < array_lenght)
+        {
+                std::cout << items[k] << ", ";
+                std::cout << "£" << prices[k] << ", ";
+                std::cout << section[k] << ", ";
+                std::cout << best_b[k] << std::endl;
+                k++;
+        }
 }
